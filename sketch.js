@@ -22,16 +22,16 @@ function setup() {
 
 	dground=new Ground();
 	stones=new Stone(100,460,23);
-	mango1=new Mango(600,290,34);
-	mango2=new Mango(855,325,35);
-	mango3=new Mango(670,260,35);
-	mango4=new Mango(730,200,35);
-	mango5=new Mango(710,320,36);
-	mango6=new Mango(780,250,35);
-	mango7=new Mango(825,170,33);
-	mango8=new Mango(880,260,35);
-	mango9=new Mango(940,220,35);
-	mango10=new Mango(980,305,35);
+	mango1=new Mango(600,290,10);
+	mango2=new Mango(855,325,10);
+	mango3=new Mango(670,260,10);
+	mango4=new Mango(730,200,10);
+	mango5=new Mango(710,320,10);
+	mango6=new Mango(780,250,10);
+	mango7=new Mango(825,170,10);
+	mango8=new Mango(880,260,10);
+	mango9=new Mango(940,220,10);
+	mango10=new Mango(980,305,10);
 
 	attach=new Throw(stones.body,{x:100,y:465});
 
@@ -88,7 +88,7 @@ function mouseDragged(){
 }
 
 function mouseReleased(){
-	attach.fly();
+	Throw.fly();
 }
 
 function detectCollision(lstones,lmango){
@@ -105,7 +105,7 @@ function detectCollision(lstones,lmango){
 function keyPressed(){
 	if(keyCode===32){
 		Matter.Body.setPosition(stones.body,{x:100,y:465});
-		attach.Launch(stones.body);
+		Throw.Launch(stones.body);
 	}
 }s
 
