@@ -6,7 +6,7 @@ class Mango{
             'friction':1.0,
         }
         this.body = Bodies.circle(x, y, diameter, options);
-        this.diameter=this.diameter;
+        this.diameter=diameter;
         this.image = loadImage("mango.png")
         
         World.add(world, this.body);
@@ -15,8 +15,9 @@ class Mango{
       display(){
         push();
         translate(this.body.position.x, this.body.position.y);
+        rotate(this.body.angle)
         imageMode(CENTER);
-        image(this.image, 0, 0, this.diameter,this.diameter);
+        image(this.image, 0, 0, this.diameter*2,this.diameter*2);
         pop();
       }
 }

@@ -21,27 +21,27 @@ function setup() {
 	world = engine.world;
 
 	dground=new Ground();
-	stones=new Stone(100,460,23);
-	mango1=new Mango(600,290,10);
-	mango2=new Mango(855,325,10);
-	mango3=new Mango(670,260,10);
-	mango4=new Mango(730,200,10);
-	mango5=new Mango(710,320,10);
-	mango6=new Mango(780,250,10);
-	mango7=new Mango(825,170,10);
-	mango8=new Mango(880,260,10);
-	mango9=new Mango(940,220,10);
-	mango10=new Mango(980,305,10);
+	stones=new Stone(100,460,46);
+	mango1=new Mango(600,290,30);
+	mango2=new Mango(855,325,30);
+	mango3=new Mango(670,260,30);
+	mango4=new Mango(730,200,30);
+	mango5=new Mango(710,320,30);
+	mango6=new Mango(780,250,30);
+	mango7=new Mango(825,170,30);
+	mango8=new Mango(880,260,30);
+	mango9=new Mango(940,220,30);
+	mango10=new Mango(980,305,30);
 
-	attach=new Throw(stones.body,{x:100,y:465});
+	rope=new Throw(stones.body,{x:100,y:465});
 
-	tree=createSprite(775,368);
-	tree.addImage(treeimg);
-	tree.scale=0.42;
+	
+	// tree.addImage(treeimg);
+	// tree.scale=0.42;
 
-	boy=createSprite(160,550);
-	boy.addImage(boyimg);
-	boy.scale=0.125;
+	// boy=createSprite(160,550);
+	// boy.addImage(boyimg);
+	// boy.scale=0.125;
 
 	Engine.run(engine);
   
@@ -50,6 +50,8 @@ function setup() {
 function draw() {
   rectMode(CENTER);
   background("grey");
+  image(treeimg,550,100,500,500);
+  image(boyimg,50,370,300,300)
 
   fill("black");
   textSize(18);
@@ -66,7 +68,7 @@ function draw() {
   detectCollision(stones,mango9);
   detectCollision(stones,mango10);
 
-  drawSprites();
+ // drawSprites();
 
   stones.display();
   dground.display();
@@ -88,15 +90,15 @@ function mouseDragged(){
 }
 
 function mouseReleased(){
-	Throw.fly();
+	rope.fly();
 }
 
 function detectCollision(lstones,lmango){
 
-	if(lstones.body.position.x- lmango.body.position.x <lmango.diametre + lstones.diametre
-		&& lmango.body.position.x - lstones.body.position.x  < lmango.diametre + lstones.diametre
-		&&lstones.body.position.y -lmango.body.position.y < lmango.diametre + lstones.diametre
-		&& lmango.body.position.y - lstones.body.position.y < lmango.diametre + lstones.diametre){
+	if(lstones.body.position.x- lmango.body.position.x <lmango.diameter + lstones.diameter
+		&& lmango.body.position.x - lstones.body.position.x  < lmango.diameter + lstones.diameter
+		&&lstones.body.position.y -lmango.body.position.y < lmango.diameter + lstones.diameter
+		&& lmango.body.position.y - lstones.body.position.y < lmango.diameter + lstones.diameter){
 		Matter.Body.setStatic(lmango.body,false);
 	}
 
@@ -105,7 +107,7 @@ function detectCollision(lstones,lmango){
 function keyPressed(){
 	if(keyCode===32){
 		Matter.Body.setPosition(stones.body,{x:100,y:465});
-		Throw.Launch(stones.body);
+		rope.attach(stones.body);
 	}
-}s
+}
 

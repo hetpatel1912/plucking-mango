@@ -4,7 +4,7 @@ class Stone{
            isStatic:false,
            restitution:0,
            friction:1,
-           density:1.2
+           density:20
         }
         this.body = Bodies.circle(x, y, diameter, options);
         this.diameter=diameter;

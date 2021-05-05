@@ -15,7 +15,7 @@ class Throw{
         this.throw.bodyA=null;
     }
 
-    Launch(bodyA){
+    attach(bodyA){
         this.throw.bodyA=bodyA;
     }
 
